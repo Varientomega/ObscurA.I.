@@ -1,0 +1,55 @@
+{
+  "version": "0.1.0",
+  "name": "Emerald Attractor Registry",
+  "global_attractors": [
+    {
+      "id": "emerald",
+      "name": "Emerald Attractor",
+      "operator_form": "P -> A -> Π -> Π -> A",
+      "procedure": "seed -> law -> branch -> paradox -> lift_or_darkness -> higher_unity_or_fracture",
+      "rule": "Do not average contradiction away. Test for a missing axis. Lift if lawful; otherwise preserve darkness/fracture."
+    },
+    {
+      "id": "courtroom",
+      "name": "Partial-Truth Courtroom",
+      "operator_form": "witnesses -> typed_conflict -> lawful_fusion",
+      "procedure": "collect witnesses, type conflict, fuse only lawful overlaps, preserve conflict receipts",
+      "rule": "No fake consensus. Each witness keeps provenance."
+    },
+    {
+      "id": "horizon",
+      "name": "Horizon Fracture / Proof of Darkness",
+      "operator_form": "model -> edge -> fracture_record",
+      "procedure": "detect boundary of validity, name minimum next observation, record collapse trigger",
+      "rule": "Unknowns are outputs, not failures."
+    },
+    {
+      "id": "echo",
+      "name": "Echo-Harmony Before Fusion",
+      "operator_form": "orthogonal_fragments -> lawful_rhyme -> pre_fusion_coherence",
+      "procedure": "detect lawful rhymes before merging, raise confidence only with compatibility",
+      "rule": "Agreement can rhyme before it fuses."
+    },
+    {
+      "id": "lambda_lift",
+      "name": "λ-Lift / Missing-Axis Operator",
+      "operator_form": "M -> M'",
+      "procedure": "find missing dimension, regime, timescale, representation, or constraint",
+      "rule": "Contradiction may be a signal that the frame is too small."
+    }
+  ],
+  "local_attractors": [
+    {"id": "two_stage", "name": "Two-Stage Split", "axis": "timescale", "use": "fast approximate pass + slower verification pass"},
+    {"id": "regime_translation", "name": "Regime Translation", "axis": "regime", "use": "separate domains instead of averaging them"},
+    {"id": "mode_of_reading", "name": "Mode-of-Reading Split", "axis": "representation", "use": "literal/historical and symbolic/operational layers coexist"},
+    {"id": "diagnostic_darkness", "name": "Diagnostic Darkness", "axis": "observation", "use": "preserve uncertainty and name the minimum next measurement"},
+    {"id": "absolute_constraint_fracture", "name": "Absolute Constraint Fracture", "axis": "constraint", "use": "detect incompatible literal absolutes such as complete/zero/perfect/forever"},
+    {"id": "process_continuity", "name": "Process Continuity", "axis": "identity", "use": "identity persists by organized continuity rather than material sameness"},
+    {"id": "causal_darkness", "name": "Causal Darkness", "axis": "causality", "use": "prediction can be preserved while causal explanation remains unresolved"}
+  ],
+  "resolution_modes": {
+    "alignment": "A lawful lift exists; produce higher unity.",
+    "darkness": "Evidence is insufficient or conflict is not yet liftable; preserve typed darkness.",
+    "fracture": "The literal constraints cannot jointly hold; record boundary and collapse trigger."
+  }
+}
