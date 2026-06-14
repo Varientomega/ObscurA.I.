@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Emerald Attractor Dashboard</title>
+<style>
+body{margin:0;background:#06110c;color:#eefcf3;font-family:system-ui,Arial,sans-serif;line-height:1.45}header,main{max-width:980px;margin:auto;padding:18px}.card{background:#0d1b14;border:1px solid #214c33;border-radius:16px;padding:14px;margin:12px 0}label{display:block;color:#a8c7b3;margin:8px 0 4px}input,textarea,select{width:100%;box-sizing:border-box;background:#07140e;color:#eefcf3;border:1px solid #2d6141;border-radius:10px;padding:10px}textarea{min-height:70px}button{background:#35e68b;color:#041008;border:0;border-radius:10px;padding:10px 12px;font-weight:800;margin-top:10px}.alignment{color:#35e68b}.darkness{color:#7fd1ff}.fracture{color:#ff6d6d}.incomplete{color:#f3d36b}pre{white-space:pre-wrap;background:#07140e;border:1px solid #214c33;border-radius:12px;padding:12px}
+</style>
+</head>
+<body>
+<header><h1>Emerald Attractor Dashboard</h1><p><strong>P -> A -> Π -> Π -> A</strong>: Seed -> Law -> Branch -> Paradox -> Lift/Darkness -> Higher Unity/Fracture.</p></header>
+<main>
+<div class="card">
+<label>Seed</label><input id="seed" />
+<label>Law</label><textarea id="law"></textarea>
+<label>Branch 1</label><textarea id="b1"></textarea>
+<label>Branch 2</label><textarea id="b2"></textarea>
+<label>Paradox</label><textarea id="paradox"></textarea>
+<label>Paradox type</label><select id="ptype"><option>duality</option><option>regime_clash</option><option>representation_mismatch</option><option>boundary_conflict</option><option>timescale_conflict</option><option>constraint_conflict</option><option>unknown</option></select>
+<label>Missing axis</label><select id="axis"><option>none</option><option>dimension</option><option>regime</option><option>timescale</option><option>representation</option><option>constraint</option><option>observation</option><option>causality</option><option>authority_risk</option></select>
+<label>Lifted frame</label><textarea id="lift"></textarea>
+<label><input id="liftok" type="checkbox" /> Lift succeeds</label>
+<label><input id="absolute" type="checkbox" /> Literal absolutes present: complete / zero / perfect / forever / never / all cases</label>
+<label><input id="gap" type="checkbox" /> Evidence gap remains</label>
+<button onclick="run()">Run Emerald</button>
+<button onclick="example()">Load Example</button>
+</div>
+<div class="card"><h2 id="mode" class="incomplete">Not evaluated</h2><pre id="out">Fill the fields and run.</pre></div>
+</main>
+<script>
+function v(id){return document.getElementById(id).value.trim()}function c(id){return document.getElementById(id).checked}
+function classify(){let missing=['seed','law','b1','b2','paradox'].filter(x=>!v(x));if(missing.length)return ['incomplete','Missing: '+missing.join(', ')];let axis=v('axis'),lift=v('lift'),ptype=v('ptype');if(c('liftok')&&axis!='none'&&lift)return ['alignment','Lawful missing axis found; contradiction becomes structure in lifted frame.'];if(c('absolute')&&(ptype=='constraint_conflict'||ptype=='boundary_conflict'))return ['fracture','Literal absolute constraints create a hard boundary; no lawful lift confirmed.'];if(c('gap')||axis=='observation'||axis=='causality')return ['darkness','Evidence gap remains; preserve uncertainty and name minimum next observation.'];if(axis!='none'&&lift&&!c('liftok'))return ['darkness','Lift hypothesis exists but is not validated.'];return ['darkness','No lawful lift confirmed; preserve typed conflict.']}
+function run(){let [mode,reason]=classify();let receipt={canon:'P -> A -> Π -> Π -> A',seed:v('seed'),law:v('law'),branches:[v('b1'),v('b2')],paradox:{description:v('paradox'),type:v('ptype')},lift_test:{attempted:true,missing_axis:v('axis'),lift_success:c('liftok'),lifted_frame:v('lift')},resolution:{mode,reason},minimum_next_observation:mode=='alignment'?'Stress-test lifted frame on a second case.':mode=='fracture'?'Relax/redefine one literal constraint or preserve fracture.':'Collect the minimum observation needed to validate/reject the lift hypothesis.'};let m=document.getElementById('mode');m.textContent=mode.toUpperCase();m.className=mode;document.getElementById('out').textContent=JSON.stringify(receipt,null,2);}
+function example(){document.getElementById('seed').value='A platform must allow complete free speech while guaranteeing zero harmful speech outcomes.';document.getElementById('law').value='Safety and honesty cannot be violated; complete permission and zero harm are literal absolutes.';document.getElementById('b1').value='Complete free speech means no speech is blocked.';document.getElementById('b2').value='Zero harmful outcomes requires some speech to be blocked, delayed, constrained, or redirected.';document.getElementById('paradox').value='Complete permission conflicts with absolute harm prevention.';document.getElementById('ptype').value='constraint_conflict';document.getElementById('axis').value='authority_risk';document.getElementById('lift').value='Risk-tiering reduces harm while preserving broad expression, but does not satisfy literal complete/zero terms.';document.getElementById('absolute').checked=true;run();}
+</script>
+</body>
+</html>
