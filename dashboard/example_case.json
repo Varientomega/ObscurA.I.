@@ -1,0 +1,15 @@
+{
+  "seed": "A robot’s thermal sensor says overheating while its mechanical strain sensor says underloaded and normal.",
+  "law": "State estimation must preserve sensor disagreement until the sensing axis is identified.",
+  "branches": [
+    "Thermal witness reports a heat anomaly.",
+    "Mechanical witness reports no overload."
+  ],
+  "paradox": "The robot appears thermally unsafe but mechanically normal.",
+  "paradox_type": "representation_mismatch",
+  "missing_axis": "observation",
+  "lifted_frame": "Possible localized hotspot, sensor fault, or timescale mismatch.",
+  "lift_success": false,
+  "literal_absolutes": false,
+  "evidence_gap": true
+}
